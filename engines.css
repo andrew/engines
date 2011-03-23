@@ -1,0 +1,13 @@
+body{
+  background:url(/image/images/chalkboard.jpg);
+  text-shadow:0 -1px 1px rgba(0,0,0,0.5);
+}
+#preso, .slide{
+  background: none;
+  color:#fff;
+  -webkit-box-shadow:none;
+}
+#footer{
+  background:none;
+  color:#fff;
+}
