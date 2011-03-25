@@ -2,7 +2,7 @@ body{
   background:url(/image/images/chalkboard.jpg);
   text-shadow:0 -1px 1px rgba(0,0,0,0.5);
 }
-#preso, .slide{
+#preso, .slide, pre.sh_sourceCode{
   background: none;
   color:#fff;
   -webkit-box-shadow:none;
@@ -10,4 +10,20 @@ body{
 #footer{
   background:none;
   color:#fff;
+}
+
+pre.sh_sourceCode .sh_comment{
+  color:#C1C1C1;
+}
+
+pre.sh_sourceCode .sh_keyword{
+  color:#6CF;
+}
+
+pre.sh_sourceCode .sh_string{
+  color:#F6F;
+}
+
+pre.sh_sourceCode .sh_symbol{
+  color:#FF6;
 }

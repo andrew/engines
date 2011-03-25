@@ -4,12 +4,21 @@
 # you'd be home by now #
 
 !SLIDE bullets incremental
-# What? #
+# What's an engine? #
 
-* a distinct piece of functionality
-* packaged as a gem
-* mounted inside of a rails app
-* rails 3
+* Rails 3 plugin
+* Packaged as a gem
+* Mounted inside of a rails app
+* Self-contained functionality
+
+!SLIDE smbullets incremental
+# Should I use engines? #
+
+* Do you use rails?
+* Do you have similar/shared functionality in multiple apps?
+* Do you create new rails apps often?
+* Have you ever wanted to version just part of your app?
+* Are you webscale?
 
 !SLIDE smbullets incremental
 # Speed up developmet #
@@ -23,14 +32,6 @@
 !SLIDE
 # Focus on the core #
 # Bolt on the rest #
-
-!SLIDE smbullets incremental
-# Should I use engines? #
-
-* Do you use rails?
-* Do you have similar/shared functionality in multiple apps?
-* Do you create new rails apps often?
-* Have you ever wanted to version just part of your app?
 
 !SLIDE
 # Example #
@@ -50,7 +51,7 @@
 
 # Used for the "Just" sites #
 
-* Products
+* Products & Variants
 * Catalogs
 * Stock levels
 * Basket
@@ -62,13 +63,15 @@
 
 !SLIDE smbullets
 
-# Easy customisation #
+# Easy per-site customisation #
 
 * Simple experiments
 * Different designs
-* Even different databases
+* Even different databases*
 
-!SLIDE center
+<span style='text-align:right;display:block;margin-top:150px'>*arbitrary mongodb reference</span>
+
+!SLIDE
 
 ![../images/justcages.png](../images/justcages.png)
 
@@ -90,12 +93,58 @@
 * locals
 * generators
 * initializers
-* easy to override
+* easily to override
 
 !SLIDE
-# Code #
 
-!SLIDE
+    outlet/app/models
+    outlet/app/controllers
+    outlet/app/views
+    outlet/config/routes.rb
+    outlet/lib/outlet.rb
+    outlet/lib/tasks
+    outlet/outlet.gemspec
+
+!SLIDE code ruby
+    @@@ruby
+    # outlet.rb
+    module Outlet
+      class Engine < Rails::Engine
+
+      end
+    end
+
+!SLIDE small
+# Webscale tip #
+## Generate css directly from you engine ##
+
+!SLIDE small
+# 1. Add to outlet.rb #
+
+    @@@ruby
+    SASS_PATH = File.join(File.dirname(__FILE__),
+                  *%w[.. .. sass])
+    CSS_PATH = File.expand_path(File.join(Rails.root,
+                  %w[public stylesheets]))
+    ::Sass::Plugin.add_template_location(SASS_PATH, CSS_PATH)
+
+!SLIDE small
+# 2. Add sass files to #
+    outlet/sass
+    outlet/sass/application.sass
+    outlet/sass/roflscale.sass
+
+!SLIDE center
+# 3. Profit! #
+![../images/profit.png](../images/profit.png)
+
+!SLIDE smbullets
 # Rails 3.1 #
 
-## New engine functionality coming in rails 3.1 ##
+* Mountable engines
+* Isolate namespaces
+* easier to mixin functionality
+
+!SLIDE center
+## git clone git://github.com/andrew/engines.git ##
+powered by showoff & heroku
