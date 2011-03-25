@@ -45,7 +45,7 @@
 
 !SLIDE
 
-# Code extracted from Petvillas
+# Code extracted from Petvillas #
 
 !SLIDE smbullets
 
@@ -71,7 +71,7 @@
 
 <span style='text-align:right;display:block;margin-top:150px'>*arbitrary mongodb reference</span>
 
-!SLIDE
+!SLIDE center
 
 ![../images/justcages.png](../images/justcages.png)
 
